@@ -23,6 +23,9 @@ const plexMono = IBM_Plex_Mono({
 export const metadata = {
   title: "Pisorama",
   description: "",
+  icons: {
+    icon: "/logo.png",
+  }
 };
 
 export default function RootLayout({ children }) {
