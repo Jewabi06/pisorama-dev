@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #1F3A34;
+  --color-paper: #EEF2ED;
+  --color-jade: #1F6F5C;
+  --color-jade-light: #DCEAE5;
+  --color-gold: #E7A93B;
+  --color-gold-dark: #8A5F17;
+  --color-rust: #C1502E;
+  --color-rust-light: #F5DFD6;
+  --color-leaf: #4C8C63;
+  --color-leaf-light: #E1EEE3;
+  --color-line: #D8DCD3;
+  --color-muted: #6B776F;
+
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
