@@ -1,10 +1,10 @@
 export const categories = [
-  "Food",
-  "Transportation",
-  "Load",
-  "School",
-  "Personal",
-  "Others"
+  { label: "Food", value: "food" },
+  { label: "Transportation", value: "transportation" },
+  { label: "Load", value: "load" },
+  { label: "School", value: "school" },
+  { label: "Personal", value: "personal" },
+  { label: "Others", value: "others" }
 ];
 
 export function createExpense({amount, category, date, note=""}) {

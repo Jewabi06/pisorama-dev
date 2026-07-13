@@ -1,10 +1,12 @@
+import Image from "next/image";
+
 export function Header () {
   return (
-    <header className="bg-blue-500 text-white p-4">
-      <img 
-        src="/logo.png" alt="Pisorama Logo" className="h-10 w-10 inline-block mr-2"
-      />
-      <h1 className="text-2l font-bold">Pisorama</h1>
+    <header className="bg-surface border-b border-line p-2 flex justify-between items-center">
+      <Image src="/logo.png" width="50" height="50" alt="Pisorama Logo"/>
+      <button className="bg-white text-gray-800 font-bold rounded-md p-2">
+        + Add Expense
+      </button>
     </header>
   )
 }
