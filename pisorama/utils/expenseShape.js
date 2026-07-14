@@ -1,16 +1,17 @@
 export const categories = [
-  { label: "Food", value: "food" },
-  { label: "Transportation", value: "transportation" },
-  { label: "Load", value: "load" },
-  { label: "School", value: "school" },
-  { label: "Personal", value: "personal" },
-  { label: "Others", value: "others" }
+  "Food",
+  "Transportation",
+  "Load",
+  "School",
+  "Personal",
+  "Others"
 ];
 
 export function createExpense({amount, category, date, note=""}) {
+  const parsedAmount = parseFloat(amount);
   return {
     id: crypto.randomUUID(),
-    amount,
+    amount: isNaN(parsedAmount) ? 0 : parsedAmount,
     category,
     date,
     note
