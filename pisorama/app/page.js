@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Header } from '../components/Header.js';
-import { QuickAddForm } from '../components/QuickAddForm.js';
+import { SmartAddBar } from '../components/SmartAddBar.js';
 import { Filter } from '../components/Filter.js';
 import { SummaryCard } from '../components/SummaryCard.js';
 import { CategoryChart } from '../components/CategoryChart.js';
@@ -12,20 +12,18 @@ export default function Home() {
 
   return (
     <>
-      <Header />
-      <main>
-        {expenses.length === 0 ? (
-          <EmptyState />
-        ) : (
-          <>
-            <QuickAddForm />
-            <Filter />
-            <SummaryCard />
-            <CategoryChart />
-            <ExpenseLedger />
-          </>
-        )}
-      </main>
+      {expenses.length === 0 ? (
+        <EmptyState />
+      ) : (
+        <>
+          <Header />
+          <SmartAddBar />
+          <Filter />
+          <SummaryCard />
+          <CategoryChart />
+          <ExpenseLedger />
+        </>
+      )}
     </>
   );
 }

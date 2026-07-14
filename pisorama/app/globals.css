@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-canvas: #121315;   /* page background — darkest */
-  --color-surface: #1B1D20;  /* card / panel background */
-  --color-raised: #232629;   /* inputs, nested elements */
-  --color-line: #33373B;     /* borders / hairlines */
-  --color-ink: #EDEEEF;      /* primary text — near white */
-  --color-dim: #B7BABD;      /* secondary text */
-  --color-muted: #7C8085;    /* tertiary text, labels */
-  --color-logo: #D9DBDD;     /* light gray logo mark */
-  --color-cta: #F2F3F4;      /* primary action button */
-  --color-ctaink: #16181A;   /* text/icon color on top of CTA */
-  --color-up: #C77B6B;       /* muted rust — spend increase */
-  --color-down: #7FA88C;     /* muted sage — spend decrease */
+  --color-canvas: #121315;
+  --color-surface: #1B1D20;
+  --color-raised: #232629;
+  --color-line: #33373B;
+  --color-ink: #EDEEEF;
+  --color-dim: #B7BABD;
+  --color-muted: #7C8085;
+  --color-logo: #D9DBDD;
+  --color-cta: #F2F3F4;
+  --color-ctaink: #16181A;
+  --color-up: #C77B6B;
+  --color-down: #7FA88C;
 
   --font-serif: "Fraunces", serif;
   --font-sans: "Work Sans", sans-serif;
