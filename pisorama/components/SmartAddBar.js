@@ -28,7 +28,7 @@ export function SmartAddBar({ onAdd, barWidth = ""}) {
   };
 
   return (
-    <div className={`w-100% ${barWidth} bg-raised rounded-xl p-3 m-7 flex flex-col gap-3`}>
+    <div className={`w-100% ${barWidth} bg-raised rounded-xl p-3 mx-3 flex flex-col`}>
       <input
         type="text"
         value={text}

@@ -4,7 +4,7 @@ export function ExpenseLedger({ expenses }) {
       {expenses.length === 0 ? (
         <p>No expenses yet.</p>
       ) : (
-        <div>
+        <div className="flex flex-col w-1/2 bg-raised">
           {expenses.map((expense) => (
             <div key={expense.id} >
               <div>

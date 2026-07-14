@@ -1,5 +1,5 @@
 "use client";
-import Select from "react-select";
+
 import { categories } from "../utils/expenseShape.js";
 
 const dateOptions = [
@@ -22,23 +22,38 @@ const amountOptions = [
 ];
 
 export function Filter() {
+  const filters = [
+    {
+      name: "Date Range",
+      options: dateOptions,
+    },
+    {
+      name: "Category",
+      options: categories,
+    },
+    {
+      name: "Amount Range",
+      options: amountOptions,
+    },
+  ];
+
   return (
-    <div className="flex gap-3 m-7">
-      <Select
-        options={dateOptions}
-        placeholder="Date Range"
-        className="w-48"
-      />
-      <Select
-        options={categories}
-        placeholder="Category"
-        className="w-48"
-      />
-      <Select
-        options={amountOptions}
-        placeholder="Amount Range"
-        className="w-48"
-      />
+    <div className="flex flex-wrap gap-3 pt-6 pl-3">
+      {filters.map((filter) => (
+        <select
+          key={filter.name}
+          className="w-50 rounded-xl bg-raised px-4 py-2 focus:outline-none"
+          defaultValue=""
+        >
+          <option value="" disabled>{filter.name}</option>
+
+          {filter.options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      ))}
     </div>
   );
 }

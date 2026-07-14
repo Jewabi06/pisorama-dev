@@ -20,18 +20,18 @@ export function SummaryCard({ expenses }) {
   const formattedCategory = topCategory.charAt(0).toUpperCase() + topCategory.slice(1);
 
   return (
-    <div className="flex gap-5">
-      <div>
+    <div className="flex gap-5 w-full px-3 pt-6">
+      <div className="flex-1 bg-raised rounded-xl p-4">
         <p>Total Spent</p>
         <span>₱{totalSpent.toLocaleString()}</span>
       </div>
 
-      <div>
+      <div className="flex-1 bg-raised rounded-xl p-4">
         <p>Top Category</p>
         <span>{formattedCategory}</span>
       </div>
 
-      <div>
+      <div className="flex-1 bg-raised rounded-xl p-4">
         <p>Entries</p>
         <span>{expenses.length}</span>
       </div>

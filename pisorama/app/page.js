@@ -32,8 +32,10 @@ export default function Home() {
           <SmartAddBar onAdd={addExpense} />
           <Filter />
           <SummaryCard expenses={expenses} />
-          <CategoryChart expenses={expenses} />
-          <ExpenseLedger expenses={expenses} />
+          <div className="flex gap-5 mt-6 mx-3">
+            <CategoryChart expenses={expenses} />
+            <ExpenseLedger expenses={expenses} />
+          </div>
         </div>
       )}
     </>
