@@ -3,7 +3,7 @@ import { useState } from "react";
 import { EditableChip } from "./EditableChip.js";
 import { parseExpenseInput } from "../utils/parseExpenseInput.js";
 
-export function SmartAddBar({ onAdd }) {
+export function SmartAddBar({ onAdd, barWidth = ""}) {
   const [text, setText] = useState("");
   const [parsed, setParsed] = useState(null);
 
@@ -13,7 +13,11 @@ export function SmartAddBar({ onAdd }) {
     setParsed(value.trim() ? parseExpenseInput(value) : null);
   };
 
-  const hasAmount = parsed && parsed.amount;
+  const hasAmount =
+    parsed &&
+    parsed.amount &&
+    !isNaN(parseFloat(parsed.amount)) &&
+    parseFloat(parsed.amount) > 0;
 
   const addExpense = () => {
     if (hasAmount && onAdd) {
@@ -24,7 +28,7 @@ export function SmartAddBar({ onAdd }) {
   };
 
   return (
-    <div className="w-full max-w-lg bg-raised rounded-xl p-3 m-7 flex flex-col gap-3">
+    <div className={`w-100% ${barWidth} bg-raised rounded-xl p-3 m-7 flex flex-col gap-3`}>
       <input
         type="text"
         value={text}

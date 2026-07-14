@@ -27,14 +27,14 @@ export default function Home() {
       {expenses.length === 0 ? (
         <EmptyState onAdd={addExpense} />
       ) : (
-        <>
+        <div className="bg-surface min-h-screen">
           <Header />
           <SmartAddBar onAdd={addExpense} />
           <Filter />
           <SummaryCard expenses={expenses} />
           <CategoryChart expenses={expenses} />
           <ExpenseLedger expenses={expenses} />
-        </>
+        </div>
       )}
     </>
   );

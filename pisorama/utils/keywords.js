@@ -1,50 +1,52 @@
 export const keywords = {
-  Food: [
-    "lunch", 
-    "dinner", 
-    "breakfast", 
-    "food", 
-    "meal", 
+  food: [
+    "lunch",
+    "dinner",
+    "breakfast",
+    "food",
+    "meal",
     "snack",
     "coffee",
     "drink",
     "eat",
     "restaurant",
-    "cafe",
+    "cafe"
   ],
-  Transportation: [
-    "grab", 
-    "jeep", 
-    "tricycle", 
+
+  transportation: [
+    "grab",
+    "jeep",
+    "tricycle",
     "transportation",
     "transport",
     "mrt",
     "lrt",
     "train",
     "bus",
-    "subway",
     "taxi",
-    "uber", 
-    "transpo", 
-    "fare", 
+    "uber",
+    "transpo",
+    "fare",
     "commute"
   ],
-  Load: [
-    "load", 
-    "gcash", 
-    "data", 
-    "prepaid",
 
+  load: [
+    "load",
+    "gcash",
+    "data",
+    "prepaid"
   ],
-  School: [
-    "school", 
-    "module", 
-    "print", 
-    "supplies", 
-    "project", 
-    "reviewer",
+
+  school: [
+    "school",
+    "module",
+    "print",
+    "supplies",
+    "project",
+    "reviewer"
   ],
-  Utility: [
+
+  utility: [
     "electricity",
     "water",
     "gas",
@@ -52,14 +54,15 @@ export const keywords = {
     "wifi",
     "phone",
     "loan",
-    "installment",
+    "installment"
   ],
-  Personal: [
-    "personal", 
-    "self", 
+
+  personal: [
+    "personal",
+    "self",
     "shopping",
     "beauty",
     "health",
-    "fitness",
+    "fitness"
   ]
 };

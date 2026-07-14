@@ -52,8 +52,8 @@ function matchCategory(text) {
       }
     }
   }
-
-  return "Others";
+  
+  return "others";
 }
 
 function buildNote(text, amount, dateKeyword) {
