@@ -1,28 +1,48 @@
-"use client"
+"use client";
 import { useState } from "react";
 import { EditableChip } from "./EditableChip.js";
 import { parseExpenseInput } from "../utils/parseExpenseInput.js";
+import { createExpense } from "../utils/expenseShape.js"
 
 export function SmartAddBar() {
   const [text, setText] = useState("");
   const [parsed, setParsed] = useState(null);
-  
+
   const handleChange = (e) => {
     const value = e.target.value;
     setText(value);
-
-    if (value.trim()) {
-      setParsed(parseExpenseInput(value));
-    } else {
-      setParsed(null);
-    }
+    setParsed(value.trim() ? parseExpenseInput(value) : null);
   };
 
+  const hasAmount = parsed && parsed.amount;
+
   return (
-    <div className="bg-raised rounded-xl">
-      <input type="text" value={text} placeholder="e.g. bought a coffee for $5" className="rounded-lg p-2 m-2 w-100 bg-surface" onChange={handleChange} />
-      
-      {parsed && <EditableChip data={parsed} />}
+    <div className="bg-raised rounded-xl p-3 m-7 flex flex-col gap-3">
+      <input
+        type="text"
+        value={text}
+        placeholder="e.g. bought an iced coffee for ₱50.00"
+        className="rounded-lg p-2 w-100 focus:outline-none"
+        onChange={handleChange}
+      />
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex flex-wrap items-center">
+          {parsed && <EditableChip data={parsed} />}
+        </div>
+        <button
+          className={`
+            w-10 h-10 rounded-full flex items-center justify-center transition-colors
+            ${hasAmount 
+              ? "bg-gold hover:bg-gold/80 active:bg-gold/60 cursor-pointer" 
+              : "bg-muted opacity-50 cursor-not-allowed"
+            }
+          `}
+          disabled={!hasAmount}
+          onClick={createExpense}
+        >
+          <span className="text-xl">+</span>
+        </button>
+      </div>
     </div>
   );
 }
