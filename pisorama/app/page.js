@@ -27,6 +27,10 @@ export default function Home() {
     );
   };
 
+  const deleteExpense = (id) => {
+    setExpenses((prev) => prev.filter((exp) => exp.id !== id));
+  };
+
   return (
     <>
       {expenses.length === 0 ? (
@@ -42,6 +46,7 @@ export default function Home() {
             <ExpenseLedger 
               expenses={expenses} 
               updateExpense={updateExpense}
+              deleteExpense={deleteExpense}
             />
           </div>
         </div>

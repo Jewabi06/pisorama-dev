@@ -3,7 +3,7 @@ import { MdDelete, MdEdit, MdSave, MdCancel } from "react-icons/md";
 import { useState } from 'react';
 import { categories } from '../utils/expenseShape.js'
 
-export function ExpenseRow({ expense, updateExpense }) {
+export function ExpenseRow({ expense, updateExpense, handleDeleteRequest }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedExpense, setEditedExpense] = useState(expense);
   
@@ -25,10 +25,6 @@ export function ExpenseRow({ expense, updateExpense }) {
   const handleCancel = () => {
     setEditedExpense(expense);
     setIsEditing(false);
-  };
-
-  const handleDelete = () => {
-    console.log("Deleted ", expense.id);
   };
 
   return (
@@ -92,7 +88,7 @@ export function ExpenseRow({ expense, updateExpense }) {
           <button onClick={isEditing ? handleSave : handleEdit}>
             {isEditing ? <MdSave size={20} /> : <MdEdit size={20} />}
           </button>
-          <button onClick={isEditing ? handleCancel : handleDelete}>
+          <button onClick={isEditing ? handleCancel : () => handleDeleteRequest(expense)}>
             {isEditing ? <MdCancel size={20} /> : <MdDelete size={20} />}
           </button>
         </div>

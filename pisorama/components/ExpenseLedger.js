@@ -1,6 +1,26 @@
+"use client";
+import { useState } from 'react';
 import { ExpenseRow } from './ExpenseRow.js';
+import { DeleteConfirmDialog } from './DeleteConfirmDialog.js';
 
-export function ExpenseLedger({ expenses, updateExpense }) {
+export function ExpenseLedger({ expenses, updateExpense, deleteExpense }) {
+  const [pendingDeleteExpense, setPendingDeleteExpense] = useState(null);
+
+  const handleDeleteRequest = (expense) => {
+    setPendingDeleteExpense(expense);
+  };
+
+  const handleConfirmDelete = () => {
+    if (pendingDeleteExpense) {
+      deleteExpense(pendingDeleteExpense.id);
+    }
+    setPendingDeleteExpense(null);
+  };
+
+  const handleCancelDelete = () => {
+    setPendingDeleteExpense(null);
+  };
+
   return (
     <>
       {expenses.length === 0 ? (
@@ -21,11 +41,19 @@ export function ExpenseLedger({ expenses, updateExpense }) {
                 key={expense.id} 
                 expense={expense} 
                 updateExpense={updateExpense} 
+                handleDeleteRequest={handleDeleteRequest}
               />
             ))}
           </tbody>
         </table>
       )}
+
+      <DeleteConfirmDialog
+        isOpen={Boolean(pendingDeleteExpense)}
+        onClose={handleCancelDelete}
+        onConfirm={handleConfirmDelete}
+        expense={pendingDeleteExpense}
+      />
     </>
   );
 }
