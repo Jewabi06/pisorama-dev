@@ -48,6 +48,7 @@ export const keywords = {
 
   utility: [
     "electricity",
+    "electric",
     "water",
     "gas",
     "internet",

@@ -1,24 +1,26 @@
+import { ExpenseRow } from './ExpenseRow.js';
+
 export function ExpenseLedger({ expenses }) {
   return (
     <>
       {expenses.length === 0 ? (
         <p>No expenses yet.</p>
       ) : (
-        <div className="flex flex-col w-1/2 bg-raised">
-          {expenses.map((expense) => (
-            <div key={expense.id} >
-              <div>
-                <p>{expense.category}</p>
-                <p>{expense.note}</p>
-              </div>
-
-              <div>
-                <p>₱{expense.amount}</p>
-                <p>{expense.date}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <table className="table-auto w-full">
+          <thead>
+            <tr>
+              <th className="p-2 text-left">Date</th>
+              <th className="p-2 text-left">Category</th>
+              <th className="p-2 text-left">Amount</th>
+              <th className="p-2 text-left">Note</th>
+            </tr>
+          </thead>
+          <tbody>
+            {expenses.map((expense) => (
+              <ExpenseRow key={expense.id} expense={expense} />
+            ))}
+          </tbody>
+        </table>
       )}
     </>
   );
