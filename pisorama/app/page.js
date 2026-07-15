@@ -21,6 +21,12 @@ export default function Home() {
     }
   };
 
+  const updateExpense = (updatedExpense) => {
+    setExpenses((prev) =>
+      prev.map((exp) => (exp.id === updatedExpense.id ? updatedExpense : exp))
+    );
+  };
+
   return (
     <>
       {expenses.length === 0 ? (
@@ -33,7 +39,10 @@ export default function Home() {
           <SummaryCard expenses={expenses} />
           <div className="flex gap-5 mt-6 mx-3">
             <CategoryChart expenses={expenses} />
-            <ExpenseLedger expenses={expenses} />
+            <ExpenseLedger 
+              expenses={expenses} 
+              updateExpense={updateExpense}
+            />
           </div>
         </div>
       )}

@@ -1,8 +1,9 @@
 "use client";
 import { MdDelete, MdEdit, MdSave, MdCancel } from "react-icons/md";
 import { useState } from 'react';
+import { categories } from '../utils/expenseShape.js'
 
-export function ExpenseRow({ expense }) {
+export function ExpenseRow({ expense, updateExpense }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedExpense, setEditedExpense] = useState(expense);
   
@@ -11,6 +12,13 @@ export function ExpenseRow({ expense }) {
   };
 
   const handleSave = () => {
+    const amountNum = Number(editedExpense.amount);
+
+    if (isNaN(amountNum) || amountNum <= 0) {
+      return;
+    }
+
+    updateExpense({ ...editedExpense, amount: amountNum });
     setIsEditing(false);
   };
 
@@ -23,12 +31,15 @@ export function ExpenseRow({ expense }) {
     console.log("Deleted ", expense.id);
   };
 
-
   return (
     <tr>
       <td className="p-2">
         {isEditing ? (
-          null
+          <input
+            type="date"
+            value={editedExpense.date}
+            onChange={(e) => setEditedExpense({ ...editedExpense, date: e.target.value })}
+          />
         ) : (
           expense.date
         )} 
@@ -36,7 +47,29 @@ export function ExpenseRow({ expense }) {
 
       <td className="p-2">
         {isEditing ? (
-          null
+          <select
+            value={editedExpense.category}
+            onChange={(e) => setEditedExpense({ ...editedExpense, category: e.target.value })}
+          >
+            {categories.map((category) => (
+              <option key={category.value} value={category.value}>
+                {category.label}
+              </option>
+            ))}
+          </select>
+        ) : (
+          (expense.category)[0].toUpperCase() + expense.category.slice(1)
+        )} 
+      </td>
+
+      <td className="p-2">
+        {isEditing ? (
+          <input
+            type="number"
+            min={1}
+            value={editedExpense.amount}
+            onChange={(e) => setEditedExpense({ ...editedExpense, amount: e.target.valueAsNumber || 0})}
+          />
         ) : (
           expense.amount
         )} 
@@ -44,15 +77,11 @@ export function ExpenseRow({ expense }) {
 
       <td className="p-2">
         {isEditing ? (
-          null
-        ) : (
-          expense.amount
-        )} 
-      </td>
-
-      <td className="p-2">
-        {isEditing ? (
-          null
+          <input 
+            type="text"
+            value={editedExpense.note}
+            onChange={(e) => setEditedExpense({ ...editedExpense, note: e.target.value })}
+          />
         ) : (
           expense.note
         )} 

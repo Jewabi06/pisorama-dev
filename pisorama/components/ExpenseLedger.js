@@ -1,6 +1,6 @@
 import { ExpenseRow } from './ExpenseRow.js';
 
-export function ExpenseLedger({ expenses }) {
+export function ExpenseLedger({ expenses, updateExpense }) {
   return (
     <>
       {expenses.length === 0 ? (
@@ -17,7 +17,11 @@ export function ExpenseLedger({ expenses }) {
           </thead>
           <tbody>
             {expenses.map((expense) => (
-              <ExpenseRow key={expense.id} expense={expense} />
+              <ExpenseRow 
+                key={expense.id} 
+                expense={expense} 
+                updateExpense={updateExpense} 
+              />
             ))}
           </tbody>
         </table>
