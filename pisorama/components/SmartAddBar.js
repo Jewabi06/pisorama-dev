@@ -1,16 +1,20 @@
 "use client";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { EditableChip } from "./EditableChip.js";
 import { parseExpenseInput } from "../utils/parseExpenseInput.js";
+import { useDebounce } from "../hooks/useDebounce.js"
 
 export function SmartAddBar({ onAdd, barWidth = ""}) {
   const [text, setText] = useState("");
-  const [parsed, setParsed] = useState(null);
+
+  const debouncedText = useDebounce(text, 500);
+
+  const parsed = useMemo(() => {
+    return debouncedText.trim() ? parseExpenseInput(debouncedText) : null;
+  }, [debouncedText]);
 
   const handleChange = (e) => {
-    const value = e.target.value;
-    setText(value);
-    setParsed(value.trim() ? parseExpenseInput(value) : null);
+    setText(e.target.value);
   };
 
   const hasAmount =
@@ -23,7 +27,6 @@ export function SmartAddBar({ onAdd, barWidth = ""}) {
     if (hasAmount && onAdd) {
       onAdd(parsed);
       setText("");
-      setParsed(null);
     }
   };
 
@@ -53,7 +56,7 @@ export function SmartAddBar({ onAdd, barWidth = ""}) {
           title={!hasAmount ? "Add an amount to enable" : "Add expense"}
           onClick={addExpense}
         >
-          <span className="text-xl">+</span>
+          <span className="text-2xl">+</span>
         </button>
       </div>
     </div>

@@ -1,6 +1,4 @@
 "use client";
-import Image from "next/image";
-import { useState } from "react";
 import { Header } from '../components/Header.js';
 import { SmartAddBar } from '../components/SmartAddBar.js';
 import { Filter } from '../components/Filter.js';
@@ -9,9 +7,10 @@ import { CategoryChart } from '../components/CategoryChart.js';
 import { ExpenseLedger } from '../components/ExpenseLedger.js';
 import { EmptyState } from '../components/EmptyState.js';
 import { createExpense, isValidExpense } from '../utils/expenseShape.js';
+import { useLocalStorage } from '../hooks/useLocalStorage.js';
 
 export default function Home() {
-  const [expenses, setExpenses] = useState([]);
+  const [expenses, setExpenses] = useLocalStorage("pisorama-expenses", []);
 
   const addExpense = (parsed) => {
     const newExpense = createExpense(parsed);   
