@@ -17,7 +17,7 @@ export function CategoryChart({ expenses }) {
   );
 
   return (
-    <div style={{ width: "100%", height: 300 }}>
+    <div className="w-full h-[260px] sm:h-[300px]">
       <ResponsiveContainer>
         <PieChart>
           <Pie
@@ -27,6 +27,7 @@ export function CategoryChart({ expenses }) {
             cx="50%"
             cy="50%"
             outerRadius={100}
+            innerRadius={50}
             label
           />
           <Tooltip />

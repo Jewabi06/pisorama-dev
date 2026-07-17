@@ -21,11 +21,11 @@ const filterConfig = [
 
 export function Filter({ filters, onFilterChange }) {
   return (
-    <div className="flex flex-wrap gap-3 pt-6 pl-3">
+    <div className="flex flex-col gap-3 px-3 pt-6 sm:flex-row sm:flex-wrap sm:gap-3">
       {filterConfig.map((filter) => (
         <select
           key={filter.key}
-          className="w-50 rounded-xl bg-raised px-4 py-2 focus:outline-none"
+          className="w-full rounded-xl bg-raised px-4 py-2.5 text-sm focus:outline-none sm:w-48 lg:w-52"
           value={filters?.[filter.key] ?? "all"}
           onChange={(event) => onFilterChange(filter.key, event.target.value)}
         >

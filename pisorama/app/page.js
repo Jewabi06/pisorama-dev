@@ -49,18 +49,24 @@ export default function Home() {
       {expenses.length === 0 ? (
         <EmptyState onAdd={addExpense} />
       ) : (
-        <div className="bg-surface min-h-screen">
+        <div className="bg-surface min-h-screen pb-8">
           <Header />
-          <SmartAddBar onAdd={addExpense} />
-          <Filter filters={filters} onFilterChange={handleFilterChange} />
-          <SummaryCard expenses={visibleExpenses} />
-          <div className="flex gap-5 mt-6 mx-3">
-            <CategoryChart expenses={visibleExpenses} />
-            <ExpenseLedger
-              expenses={visibleExpenses}
-              updateExpense={updateExpense}
-              deleteExpense={deleteExpense}
-            />
+          <div className="mx-3 mt-4 sm:mx-4 lg:mx-6 lg:max-w-7xl lg:mx-auto">
+            <SmartAddBar onAdd={addExpense} />
+            <Filter filters={filters} onFilterChange={handleFilterChange} />
+            <SummaryCard expenses={visibleExpenses} />
+            <div className="mt-6 flex flex-col gap-5 lg:flex-row lg:items-start">
+              <div className="w-full lg:w-[45%]">
+                <CategoryChart expenses={visibleExpenses} />
+              </div>
+              <div className="w-full lg:w-[55%]">
+                <ExpenseLedger
+                  expenses={visibleExpenses}
+                  updateExpense={updateExpense}
+                  deleteExpense={deleteExpense}
+                />
+              </div>
+            </div>
           </div>
         </div>
       )}

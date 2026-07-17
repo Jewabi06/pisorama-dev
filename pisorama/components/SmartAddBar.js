@@ -31,22 +31,22 @@ export function SmartAddBar({ onAdd, barWidth = ""}) {
   };
 
   return (
-    <div className={`w-100% ${barWidth} bg-raised rounded-xl p-3 mx-3 flex flex-col`}>
+    <div className={`w-full ${barWidth} bg-raised rounded-xl p-3 sm:p-4 mx-3 sm:mx-4 lg:mx-0 flex flex-col gap-3`}>
       <input
         type="text"
         value={text}
         placeholder="e.g. bought an iced coffee for ₱50.00"
-        className="rounded-lg p-2 w-full focus:outline-none"
+        className="rounded-lg p-2.5 w-full focus:outline-none text-sm sm:text-base"
         onChange={handleChange}
         maxLength={50}
       />
-      <div className="flex items-center justify-between gap-3">
-        <div className="flex flex-wrap items-center">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-wrap items-center gap-2">
           {parsed && <EditableChip data={parsed} />}
         </div>
         <button
           className={`
-            w-10 h-10 rounded-full flex items-center justify-center transition-colors
+            w-11 h-11 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-colors self-end sm:self-auto
             ${hasAmount 
               ? "bg-gold hover:bg-gold/80 active:bg-gold/60 cursor-pointer" 
               : "bg-muted opacity-50 cursor-not-allowed"
@@ -56,7 +56,7 @@ export function SmartAddBar({ onAdd, barWidth = ""}) {
           title={!hasAmount ? "Add an amount to enable" : "Add expense"}
           onClick={addExpense}
         >
-          <span className="text-2xl">+</span>
+          <span className="text-2xl leading-none">+</span>
         </button>
       </div>
     </div>

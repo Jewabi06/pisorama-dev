@@ -23,30 +23,33 @@ export function ExpenseLedger({ expenses, updateExpense, deleteExpense }) {
 
   return (
     <>
-      {expenses.length === 0 ? (
-        <p>No expenses yet.</p>
-      ) : (
-        <table className="table-auto w-full">
-          <thead>
-            <tr>
-              <th className="p-2 text-left">Date</th>
-              <th className="p-2 text-left">Category</th>
-              <th className="p-2 text-left">Amount</th>
-              <th className="p-2 text-left">Note</th>
-            </tr>
-          </thead>
-          <tbody>
-            {expenses.map((expense) => (
-              <ExpenseRow 
-                key={expense.id} 
-                expense={expense} 
-                updateExpense={updateExpense} 
-                handleDeleteRequest={handleDeleteRequest}
-              />
-            ))}
-          </tbody>
-        </table>
-      )}
+      <div className="w-full overflow-x-auto rounded-xl bg-raised/40 p-2 sm:p-3">
+        {expenses.length === 0 ? (
+          <p className="px-2 py-4 text-sm text-dim">No expenses yet.</p>
+        ) : (
+          <table className="min-w-[560px] w-full table-auto text-sm sm:text-base">
+            <thead>
+              <tr>
+                <th className="p-2 text-left">Date</th>
+                <th className="p-2 text-left">Category</th>
+                <th className="p-2 text-left">Amount</th>
+                <th className="p-2 text-left">Note</th>
+                <th className="p-2 text-left">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {expenses.map((expense) => (
+                <ExpenseRow 
+                  key={expense.id} 
+                  expense={expense} 
+                  updateExpense={updateExpense} 
+                  handleDeleteRequest={handleDeleteRequest}
+                />
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
 
       <DeleteConfirmDialog
         isOpen={Boolean(pendingDeleteExpense)}
