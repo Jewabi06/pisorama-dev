@@ -8,12 +8,12 @@ export function EditableChip({ data }) {
   ].filter((chip) => chip.value);
 
   return (
-    <div className="flex gap-2 min-w-0">
+    <div className="flex min-w-0 gap-2">
       {chips.map(({ key, value }) => (
         <span
           key={key}
           title={value}
-          className="px-4 py-1 rounded-full bg-canvas truncate max-w-32 overflow-hidden whitespace-nowrap inline-block"
+          className="inline-block max-w-32 truncate overflow-hidden whitespace-nowrap rounded-full border border-gold/20 bg-gold/10 px-4 py-1 text-sm text-ink"
         >
           {value}
         </span>

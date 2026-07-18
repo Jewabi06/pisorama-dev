@@ -25,7 +25,7 @@ export function Filter({ filters, onFilterChange }) {
       {filterConfig.map((filter) => (
         <select
           key={filter.key}
-          className="w-full rounded-xl bg-raised px-4 py-2.5 text-sm focus:outline-none sm:w-48 lg:w-52"
+          className="w-full rounded-xl border border-white/10 bg-surface/80 px-4 py-2.5 text-sm text-ink shadow-sm transition-all duration-200 hover:border-gold/30 focus:border-gold/50 focus:outline-none sm:w-48 lg:w-52"
           value={filters?.[filter.key] ?? "all"}
           onChange={(event) => onFilterChange(filter.key, event.target.value)}
         >

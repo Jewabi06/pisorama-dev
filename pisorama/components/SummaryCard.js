@@ -1,4 +1,6 @@
+"use client";
 import { getTotal, getTopCategory } from '../utils/calculation.js';
+import '../app/globals.css'
 
 export function SummaryCard({ expenses = [] }) {
   const topCategory = getTopCategory(expenses);
@@ -8,20 +10,20 @@ export function SummaryCard({ expenses = [] }) {
       : topCategory.charAt(0).toUpperCase() + topCategory.slice(1);
 
   return (
-    <div className="flex flex-col gap-3 w-full px-3 pt-6 sm:flex-row sm:flex-wrap">
-      <div className="flex-1 min-w-0 bg-raised rounded-xl p-4">
-        <p>Total Spent</p>
-        <span>₱{getTotal(expenses)}</span>
+    <div className="flex w-full flex-col gap-3 px-3 pt-6 sm:flex-row sm:flex-wrap">
+      <div className="card-style">
+        <p className="text-sm uppercase tracking-[0.2em] text-dim">Total Spent</p>
+        <span className="mt-2 block text-2xl font-semibold text-gold">₱{getTotal(expenses)}</span>
       </div>
 
-      <div className="flex-1 min-w-0 bg-raised rounded-xl p-4">
-        <p>Top Category</p>
-        <span>{formattedTopCategory}</span>
+      <div className="card-style">
+        <p className="text-sm uppercase tracking-[0.2em] text-dim">Top Category</p>
+        <span className="mt-2 block text-2xl font-semibold text-gold">{formattedTopCategory}</span>
       </div>
 
-      <div className="flex-1 min-w-0 bg-raised rounded-xl p-4">
-        <p>Entries</p>
-        <span>{expenses.length}</span>
+      <div className="card-style">
+        <p className="text-sm uppercase tracking-[0.2em] text-dim">Entries</p>
+        <span className="mt-2 block text-2xl font-semibold text-gold">{expenses.length}</span>
       </div>
     </div>
   );

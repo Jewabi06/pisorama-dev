@@ -28,12 +28,12 @@ export function ExpenseRow({ expense, updateExpense, handleDeleteRequest }) {
   };
 
   return (
-    <tr>
-      <td className="p-2 align-top">
+    <tr className="border-b border-white/10 transition-colors duration-200 hover:bg-white/[0.03]">
+      <td className="p-2 align-top text-ink">
         {isEditing ? (
           <input
             type="date"
-            className="w-full min-w-[110px] rounded-md border border-line bg-surface px-2 py-1.5 text-sm"
+            className="w-full min-w-[110px] rounded-md border border-white/10 bg-surface/70 px-2 py-1.5 text-sm text-ink shadow-inner focus:border-gold/50 focus:outline-none"
             value={editedExpense.date}
             onChange={(e) => setEditedExpense({ ...editedExpense, date: e.target.value })}
           />
@@ -42,10 +42,10 @@ export function ExpenseRow({ expense, updateExpense, handleDeleteRequest }) {
         )} 
       </td>
 
-      <td className="p-2 align-top">
+      <td className="p-2 align-top text-ink">
         {isEditing ? (
           <select
-            className="w-full min-w-[110px] rounded-md border border-line bg-surface px-2 py-1.5 text-sm"
+            className="w-full min-w-[110px] rounded-md border border-white/10 bg-surface/70 px-2 py-1.5 text-sm text-ink shadow-inner focus:border-gold/50 focus:outline-none"
             value={editedExpense.category}
             onChange={(e) => setEditedExpense({ ...editedExpense, category: e.target.value })}
           >
@@ -56,16 +56,18 @@ export function ExpenseRow({ expense, updateExpense, handleDeleteRequest }) {
             ))}
           </select>
         ) : (
-          (expense.category)[0].toUpperCase() + expense.category.slice(1)
+          <span className="rounded-full border border-gold/20 bg-gold/10 px-2.5 py-1 text-xs font-medium uppercase tracking-[0.2em] text-gold">
+            {(expense.category)[0].toUpperCase() + expense.category.slice(1)}
+          </span>
         )} 
       </td>
 
-      <td className="p-2 align-top">
+      <td className="p-2 align-top text-ink">
         {isEditing ? (
           <input
             type="number"
             min={1}
-            className="w-full min-w-[90px] rounded-md border border-line bg-surface px-2 py-1.5 text-sm"
+            className="w-full min-w-[90px] rounded-md border border-white/10 bg-surface/70 px-2 py-1.5 text-sm text-ink shadow-inner focus:border-gold/50 focus:outline-none"
             value={editedExpense.amount}
             onChange={(e) => setEditedExpense({ ...editedExpense, amount: e.target.valueAsNumber || 0})}
           />
@@ -74,11 +76,11 @@ export function ExpenseRow({ expense, updateExpense, handleDeleteRequest }) {
         )} 
       </td>
 
-      <td className="p-2 align-top">
+      <td className="p-2 align-top text-dim">
         {isEditing ? (
           <input 
             type="text"
-            className="w-full min-w-[140px] rounded-md border border-line bg-surface px-2 py-1.5 text-sm"
+            className="w-full min-w-[140px] rounded-md border border-white/10 bg-surface/70 px-2 py-1.5 text-sm text-ink shadow-inner focus:border-gold/50 focus:outline-none"
             value={editedExpense.note}
             onChange={(e) => setEditedExpense({ ...editedExpense, note: e.target.value })}
           />
@@ -89,10 +91,10 @@ export function ExpenseRow({ expense, updateExpense, handleDeleteRequest }) {
 
       <td className="p-2 align-top">
         <div className="flex justify-center gap-3 sm:gap-4">
-          <button className="rounded-full p-2 transition-colors hover:bg-raised" onClick={isEditing ? handleSave : handleEdit}>
+          <button className="rounded-full border border-transparent p-2 text-dim transition-all duration-200 hover:border-gold/20 hover:bg-gold/10 hover:text-ink" onClick={isEditing ? handleSave : handleEdit}>
             {isEditing ? <MdSave size={20} /> : <MdEdit size={20} />}
           </button>
-          <button className="rounded-full p-2 transition-colors hover:bg-raised" onClick={isEditing ? handleCancel : () => handleDeleteRequest(expense)}>
+          <button className="rounded-full border border-transparent p-2 text-dim transition-all duration-200 hover:border-gold/20 hover:bg-gold/10 hover:text-ink" onClick={isEditing ? handleCancel : () => handleDeleteRequest(expense)}>
             {isEditing ? <MdCancel size={20} /> : <MdDelete size={20} />}
           </button>
         </div>
