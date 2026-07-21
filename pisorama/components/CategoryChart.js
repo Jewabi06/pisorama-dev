@@ -17,7 +17,7 @@ export function CategoryChart({ expenses }) {
   );
 
   return (
-    <div className="h-[260px] w-full rounded-2xl border border-white/10 bg-[linear-gradient(135deg,_rgba(35,38,41,0.95),_rgba(24,25,28,0.95))] p-2 shadow-[0_12px_35px_rgba(0,0,0,0.22)] sm:h-[300px]">
+    <div className="h-[275px] w-full card-style">
       <ResponsiveContainer>
         <PieChart>
           <Pie

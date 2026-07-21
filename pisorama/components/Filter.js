@@ -21,7 +21,7 @@ const filterConfig = [
 
 export function Filter({ filters, onFilterChange }) {
   return (
-    <div className="flex flex-col gap-3 px-3 pt-6 sm:flex-row sm:flex-wrap sm:gap-3">
+    <div className="flex flex-col gap-3 pt-6 sm:flex-row sm:flex-wrap sm:gap-3">
       {filterConfig.map((filter) => (
         <select
           key={filter.key}
@@ -30,7 +30,11 @@ export function Filter({ filters, onFilterChange }) {
           onChange={(event) => onFilterChange(filter.key, event.target.value)}
         >
           {filter.options.map((option) => (
-            <option key={option.value} value={option.value}>
+            <option
+              key={option.value} 
+              value={option.value}
+              className="bg-surface"
+            >
               {option.label}
             </option>
           ))}

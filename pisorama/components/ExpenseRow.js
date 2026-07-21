@@ -28,12 +28,14 @@ export function ExpenseRow({ expense, updateExpense, handleDeleteRequest }) {
   };
 
   return (
-    <tr className="border-b border-white/10 transition-colors duration-200 hover:bg-white/[0.03]">
-      <td className="p-2 align-top text-ink">
+    <tr className="
+      border-b border-white/10 transition-colors duration-200 hover:bg-white/[0.05] 
+    ">
+      <td className="py-2 w-[120px]">
         {isEditing ? (
           <input
             type="date"
-            className="w-full min-w-[110px] rounded-md border border-white/10 bg-surface/70 px-2 py-1.5 text-sm text-ink shadow-inner focus:border-gold/50 focus:outline-none"
+            className="w-[120px]"
             value={editedExpense.date}
             onChange={(e) => setEditedExpense({ ...editedExpense, date: e.target.value })}
           />
@@ -42,10 +44,10 @@ export function ExpenseRow({ expense, updateExpense, handleDeleteRequest }) {
         )} 
       </td>
 
-      <td className="p-2 align-top text-ink">
+      <td className="w-[120px] px-2">
         {isEditing ? (
           <select
-            className="w-full min-w-[110px] rounded-md border border-white/10 bg-surface/70 px-2 py-1.5 text-sm text-ink shadow-inner focus:border-gold/50 focus:outline-none"
+            className="w-[120px]"
             value={editedExpense.category}
             onChange={(e) => setEditedExpense({ ...editedExpense, category: e.target.value })}
           >
@@ -56,31 +58,34 @@ export function ExpenseRow({ expense, updateExpense, handleDeleteRequest }) {
             ))}
           </select>
         ) : (
-          <span className="rounded-full border border-gold/20 bg-gold/10 px-2.5 py-1 text-xs font-medium uppercase tracking-[0.2em] text-gold">
+          <span className="">
             {(expense.category)[0].toUpperCase() + expense.category.slice(1)}
           </span>
         )} 
       </td>
 
-      <td className="p-2 align-top text-ink">
+      <td className="w-[120px]">
         {isEditing ? (
           <input
             type="number"
             min={1}
-            className="w-full min-w-[90px] rounded-md border border-white/10 bg-surface/70 px-2 py-1.5 text-sm text-ink shadow-inner focus:border-gold/50 focus:outline-none"
+            max={1000000}
+            className=""
             value={editedExpense.amount}
-            onChange={(e) => setEditedExpense({ ...editedExpense, amount: e.target.valueAsNumber || 0})}
+            onChange={(e) => setEditedExpense({ 
+              ...editedExpense, amount: e.target.valueAsNumber || 0
+            })}
           />
         ) : (
           expense.amount
         )} 
       </td>
 
-      <td className="p-2 align-top text-dim">
+      <td className="truncate max-w-10">
         {isEditing ? (
           <input 
             type="text"
-            className="w-full min-w-[140px] rounded-md border border-white/10 bg-surface/70 px-2 py-1.5 text-sm text-ink shadow-inner focus:border-gold/50 focus:outline-none"
+            className=""
             value={editedExpense.note}
             onChange={(e) => setEditedExpense({ ...editedExpense, note: e.target.value })}
           />
@@ -89,12 +94,18 @@ export function ExpenseRow({ expense, updateExpense, handleDeleteRequest }) {
         )} 
       </td>
 
-      <td className="p-2 align-top">
-        <div className="flex justify-center gap-3 sm:gap-4">
-          <button className="rounded-full border border-transparent p-2 text-dim transition-all duration-200 hover:border-gold/20 hover:bg-gold/10 hover:text-ink" onClick={isEditing ? handleSave : handleEdit}>
+      <td>
+        <div className="flex justify-center gap-3">
+          <button 
+            className="transition-all duration-200 hover:text-gold" 
+            onClick={isEditing ? handleSave : handleEdit}
+          >
             {isEditing ? <MdSave size={20} /> : <MdEdit size={20} />}
           </button>
-          <button className="rounded-full border border-transparent p-2 text-dim transition-all duration-200 hover:border-gold/20 hover:bg-gold/10 hover:text-ink" onClick={isEditing ? handleCancel : () => handleDeleteRequest(expense)}>
+          <button 
+            className="transition-all duration-200 hover:text-gold" 
+            onClick={isEditing ? handleCancel : () => handleDeleteRequest(expense)}
+          >
             {isEditing ? <MdCancel size={20} /> : <MdDelete size={20} />}
           </button>
         </div>

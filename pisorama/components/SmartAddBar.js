@@ -31,12 +31,12 @@ export function SmartAddBar({ onAdd, barWidth = ""}) {
   };
 
   return (
-    <div className={`w-full ${barWidth} flex flex-col gap-3 rounded-2xl border border-white/10 bg-[linear-gradient(135deg,_rgba(35,38,41,0.96),_rgba(27,29,32,0.96))] p-3 shadow-[0_16px_45px_rgba(0,0,0,0.25)] ring-1 ring-black/20 transition-all duration-200 hover:border-gold/30 hover:shadow-[0_18px_50px_rgba(0,0,0,0.3)] sm:p-4 sm:mx-4 lg:mx-0`}>
+    <div className={`w-full ${barWidth} flex flex-col gap-3 card-style`}>
       <input
         type="text"
         value={text}
         placeholder="e.g. bought an iced coffee for ₱50.00"
-        className="w-full rounded-lg border border-white/10 bg-surface/70 p-2.5 text-sm text-ink placeholder:text-muted shadow-inner focus:border-gold/50 focus:outline-none focus:ring-2 focus:ring-gold/20 sm:text-base"
+        className="w-full outline-none"
         onChange={handleChange}
         maxLength={50}
       />

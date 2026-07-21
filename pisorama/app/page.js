@@ -49,13 +49,13 @@ export default function Home() {
       {expenses.length === 0 ? (
         <EmptyState onAdd={addExpense} />
       ) : (
-        <div className="bg-surface min-h-screen pb-8">
+        <div className="bg-surface min-h-screen">
           <Header />
-          <div className="mx-3 mt-4 sm:mx-4 lg:mx-6 lg:max-w-7xl lg:mx-auto">
+          <div className="mx-2">
             <SmartAddBar onAdd={addExpense} />
             <Filter filters={filters} onFilterChange={handleFilterChange} />
             <SummaryCard expenses={visibleExpenses} />
-            <div className="mt-6 flex flex-col gap-5 lg:flex-row lg:items-start">
+            <div className="mt-3 flex flex-col gap-3 lg:flex-row lg:items-start">
               <div className="w-full lg:w-[45%]">
                 <CategoryChart expenses={visibleExpenses} />
               </div>

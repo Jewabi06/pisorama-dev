@@ -10,7 +10,7 @@ export function SummaryCard({ expenses = [] }) {
       : topCategory.charAt(0).toUpperCase() + topCategory.slice(1);
 
   return (
-    <div className="flex w-full flex-col gap-3 px-3 pt-6 sm:flex-row sm:flex-wrap">
+    <div className="flex w-full flex-col gap-3 pt-6 sm:flex-row sm:flex-wrap">
       <div className="card-style">
         <p className="text-sm uppercase tracking-[0.2em] text-dim">Total Spent</p>
         <span className="mt-2 block text-2xl font-semibold text-gold">₱{getTotal(expenses)}</span>
